@@ -1,6 +1,6 @@
 -- show ALL books with authors
 -- INNER JOIN will only return all matching values from both tables
-SELECT departments, roles, employees
+SELECT department, roles, employee
 FROM books
   INNER JOIN authors ON books.authorId = authors.id;
 

@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const db = require('../../db/database');
-const inputCheck = require('../../utils/inputCheck');
+const db = require("../../db/database");
+const inputCheck = require("../../utils/inputCheck");
 
 // Get the total votes for all the candidates
-router.get('/votes', (req, res) => {
-  const sql =  `SELECT candidates.*, parties.name AS party_name, 
+router.get("/employee", (req, res) => {
+  const sql = `SELECT candidates.*, parties.name AS party_name, 
                 COUNT(candidate_id) 
                 AS count FROM votes 
                 LEFT JOIN candidates ON votes.candidate_id = candidates.id 
@@ -20,34 +20,34 @@ router.get('/votes', (req, res) => {
     }
 
     res.json({
-      message: 'success',
-      data: rows
+      message: "success",
+      data: rows,
     });
   });
 });
 
 // Create a vote record
-router.post('/vote', ({body}, res) => {
-  // Data validation 
-  const errors = inputCheck(body, 'voter_id', 'candidate_id');
+router.post("/vote", ({ body }, res) => {
+  // Data validation
+  const errors = inputCheck(body, "voter_id", "candidate_id");
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
-  
+
   const sql = `INSERT INTO votes (voter_id, candidate_id) VALUES (?,?)`;
   const params = [body.voter_id, body.candidate_id];
-  // use ES5 function, not arrow to use this 
-  db.run(sql, params, function(err, result) {
+  // use ES5 function, not arrow to use this
+  db.run(sql, params, function (err, result) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
     }
 
     res.json({
-      message: 'success',
+      message: "success",
       data: body,
-      id: this.lastID
+      id: this.lastID,
     });
   });
 });
