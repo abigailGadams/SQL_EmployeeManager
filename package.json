@@ -11,6 +11,11 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "author": "Abigail Adams",
+  "license": "MIT",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.0.0",
+    "mysql2": "^2.2.5"
+  }
 }

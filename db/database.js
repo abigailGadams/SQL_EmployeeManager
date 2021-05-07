@@ -1,11 +1,13 @@
-const sqlite3 = require("sqlite3").verbose();
-
-// Connect to database
-const db = new sqlite3.Database("./db/employeeManager.db", (err) => {
-  if (err) {
-    return console.error(err.message);
+const connection = require("./connection");
+class db {
+  constructor(connection) {
+    this.connection = connection;
   }
-  console.log("Connected to the employee manager database.");
-});
+  findAllDepartments() {
+    return this.connection
+      .promise()
+      .query("SELECT department.id,department.department_name FROM department");
+  }
+}
 
-module.exports = db;
+module.exports = new db(connection);

@@ -1,25 +1,56 @@
-const express = require('express');
-const db = require('./db/database');
+const inquirer = require("inquirer");
+const { prompt } = require("inquirer");
+const db = require("./db/database");
+require("console.table");
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+function mainMenu() {
+     inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    },
+    {
+      type: 'list',
+      message: 'What is your preferred method of communication?',
+      name: 'contact',
+      choices: ['email', 'phone', 'Slack', 'smoke signal']
+    },
+    {
+      type: 'checkbox',
+      message: 'What languages do you know?',
+      name: 'stack',
+      choices: ['HTML', 'CSS', 'JavaScript', 'SQL']
+    }
+  // shows user different options they can choose from
+  // i.e. inquirer code
+}
 
-const apiRoutes = require('./routes/apiRoutes');
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+function viewDepartments() {
+  // write js to interact with database
+  // around 10 lines of code
+  db.findAllDepartments().then(([rows]) => {
+      let departments = rows;
+      console.log("\n");
+      console.table(departments);
+    })
+    .then(() => loadMainPrompts());
+}
 
-// Use apiRoutes
-app.use('/api', apiRoutes);
+function viewRoles() {}
 
-// Default response for any other request(Not Found) Catch all other
-app.use((req, res) => {
-  res.status(404).end();
-});
+function viewEmployees() {}
 
-// Start server after DB connection
-db.on('open', () => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-});
+function addDepartment() {}
+
+function addRole() {}
+
+function addEmployee() {}
+
+function updateEmployeeRole() {}
+
+function quit() {}
+
+mainMenu();
+
+

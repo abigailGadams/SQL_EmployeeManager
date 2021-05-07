@@ -1,4 +1,4 @@
-INSERT INTO employeeData (employeeID, first_name, last_name, job_titles, departments, salaries, managers)
+INSERT INTO employeeData (employee_id, first_name, last_name, job_titles, departments, salaries, managers)
 VALUES
   (1, 'Ronald', 'Firbank', 'CEO','IT','base','Bob Smith'),
   (2, 'Virginia', 'Woolf', 'CFO','IT','base','Bob Smith'),
