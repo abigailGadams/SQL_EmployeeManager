@@ -1,7 +1,7 @@
 {
-  "name": "vote-api",
+  "name": "employee-manager-db",
   "version": "1.0.0",
-  "description": "Back-end APIs for a voting app.",
+  "description": "Database used to view and manage departments, roles and employees for a business.",
   "main": "server.js",
   "devDependencies": {
     "jest": "^25.1.0"
