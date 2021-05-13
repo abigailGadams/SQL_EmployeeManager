@@ -21,7 +21,6 @@ const mainMenu = () => {
       ],
     },
   ]);
-  inquirer.then((answers) => console.log(answers));
 };
 
 // shows user different options they can choose from
@@ -36,7 +35,7 @@ function viewDepartments() {
       console.log("\n");
       console.table(departments);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function viewRoles() {
@@ -46,7 +45,7 @@ function viewRoles() {
       console.log("\n");
       console.table(roles);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function viewEmployees() {
@@ -56,7 +55,7 @@ function viewEmployees() {
       console.log("\n");
       console.table(employee);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function addDepartment() {
@@ -66,7 +65,7 @@ function addDepartment() {
       console.log("\n");
       console.table(departments);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function addRole() {
@@ -76,7 +75,7 @@ function addRole() {
       console.log("\n");
       console.table(roles);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function addEmployee() {
@@ -86,17 +85,17 @@ function addEmployee() {
       console.log("\n");
       console.table(employee);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function updateEmployeeRole() {
   db.updateEmployeeRoles()
     .then(([rows]) => {
-      let employee.roles = rows;
+      let employeeRoles = rows;
       console.log("\n");
       console.table(departments);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
 function quit() {
@@ -106,7 +105,31 @@ function quit() {
       console.log("\n");
       console.table(departments);
     })
-    .then(() => loadMainPrompts());
+    .then(() => mainMenu());
 }
 
-mainMenu();
+mainMenu().then((answer) => {
+  switch (answer.choices) {
+    case "View all departments":
+      viewDepartments();
+      break;
+    case "View all roles":
+      viewRoles();
+      break;
+    case "View all employees":
+      viewEmployees();
+      break;
+    case "Add a department":
+      addDepartment();
+      break;
+    case "Add a role":
+      addRole();
+      break;
+    case "Add an employee":
+      addEmployee();
+      break;
+    case "Update an employee":
+      updateEmployeeRole();
+      break;
+  }
+});

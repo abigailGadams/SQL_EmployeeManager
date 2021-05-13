@@ -1,12 +1,33 @@
-INSERT INTO employeeData (employee_id, first_name, last_name, job_titles, departments, salaries, managers)
+INSERT INTO department (department_name)
 VALUES
-  (1, 'Ronald', 'Firbank', 'CEO','IT','base','Bob Smith'),
-  (2, 'Virginia', 'Woolf', 'CFO','IT','base','Bob Smith'),
-  (3, 'Piers', 'Gaveston', 'Project Manager','IT','base','Bob Smith'),
-  (4, 'Charles', 'LeRoi', 'Sales','IT','base','Bob Smith'),
-  (5, 'Katherine', 'Mansfield', 'CEO','IT','base','Bob Smith'),
-  (6, 'Dora', 'Carrington', 'CEO','IT','base','Bob Smith'),
-  (7, 'Edward', 'Bellamy', 'CEO','IT','base','Bob Smith'),
-  (8, 'Montague', 'Summers', 'CEO','IT','base','Bob Smith'),
-  (9, 'Octavia', 'Butler', 'CEO','IT','base','Bob Smith'),
-  (10, 'Unica', 'Zurn', 'CEO','IT','base','Bob Smith');
+('Sales'),
+('Engineering'),
+('Finance'),
+('Legal');
+
+INSERT INTO roles (title,salary,department_id)
+VALUES
+('Sales Lead',	100000,	1),
+('Salesperson',	80000,	1),
+('Lead Engineer', 150000,2),
+('Software Engineer',	120000,	2),
+('Accountant',	125000,	3),
+('Legal Team Lead',	250000,	4),
+('Lawyer',	190000,	4),
+('Lead Engineer',	150000,	2);
+
+
+
+
+INSERT INTO employee (first_name, last_name, roles_id)
+VALUES
+  ( 'Ronald', 'Firbank',1),
+  ('Virginia', 'Woolf',2),
+  ('Piers', 'Gaveston',3),
+  ( 'Charles', 'LeRoi', 5),
+  ('Katherine', 'Mansfield', 6),
+  ( 'Dora', 'Carrington', 6),
+  ('Edward', 'Bellamy', 7),
+  ('Montague', 'Summers',7),
+  ('Octavia', 'Butler', 8),
+  ( 'Unica', 'Zurn', 8);
