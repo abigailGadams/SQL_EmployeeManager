@@ -12,8 +12,24 @@ class db {
     return this.connection.promise().query("SELECT * from roles");
   }
 
-  viewAllRoles() {
+  viewAllEmployees() {
+    return this.connection.promise().query("SELECT * from employee");
+  }
+
+  addAllDepartment() {
+    return this.connection.promise().query("SELECT * from departments");
+  }
+  addAllRoles() {
     return this.connection.promise().query("SELECT * from roles");
+  }
+  addAllEmployees() {
+    return this.connection.promise().query("SELECT * from employee");
+  }
+  updateEmployeeRoles() {
+    return this.connection.promise().query("SELECT * from employeeRoles");
+  }
+  quit() {
+    return this.connection.promise().query("SELECT * from departments");
   }
 }
 
