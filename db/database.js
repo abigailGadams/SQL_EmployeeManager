@@ -4,20 +4,24 @@ class db {
     this.connection = connection;
   }
   findAllDepartments() {
-    return this.connection
-      .promise()
-      .query("SELECT department.id,department.department_name FROM department");
+    return this.connection.promise().query("SELECT * FROM department");
   }
   viewAllRoles() {
     return this.connection.promise().query("SELECT * from roles");
   }
 
   viewAllEmployees() {
-    return this.connection.promise().query("SELECT * from employee");
+    return this.connection
+      .promise()
+      .query(
+        "SELECT department.id,department.department_name,department.id  FROM department"
+      );
   }
 
   addAllDepartment() {
-    return this.connection.promise().query("SELECT * from departments");
+    return this.connection
+      .promise()
+      .query("SELECT department.id,department.department_name FROM department");
   }
   addAllRoles() {
     return this.connection.promise().query("SELECT * from roles");

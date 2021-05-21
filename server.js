@@ -1,23 +1,24 @@
 const inquirer = require("inquirer");
 const { prompt } = require("inquirer");
+const { findAllDepartments } = require("./db/database");
 const db = require("./db/database");
 require("console.table");
 
+// when running .headers on .mode column
 const mainMenu = () => {
   return inquirer.prompt([
     {
       type: "list",
-      message:
-        "Welcome to EmployeeManager, please select from the following menu:",
+      message: "Welcome to EmployeeManager. What would you like to do? ",
       name: "choices",
       choices: [
-        "View all departments",
-        "View all roles",
-        "View all employees",
-        "Add a department",
-        "Add a role",
-        "Add an employee",
-        "Update an employee",
+        "View all Departments",
+        "View all Employees by Department",
+        "View all Employees by Manager",
+        "Add an Employee",
+        "Remove an Employee",
+        "Update an Employee Role",
+        "Update an Employee Manager",
       ],
     },
   ]);
@@ -32,6 +33,7 @@ function viewDepartments() {
   db.findAllDepartments()
     .then(([rows]) => {
       let departments = rows;
+      console.log(departments);
       console.log("\n");
       console.table(departments);
     })
